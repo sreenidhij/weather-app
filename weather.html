@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+           background-color: #87CEEB; /* Replace 'background-image.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* White text color */
+        }
+
+        #weather-container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(142, 170, 235); /* Semi-transparent black background for better visibility */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+s
+        #temperature {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        #description,
+        #humidity,
+        #wind,
+        #precipitation {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        #city-input {
+            padding: 8px;
+            font-size: 1em;
+        }
+
+        #get-weather-btn {
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+    <title>Weather App</title>
+</head>
+<body>
+    <div id="weather-container">
+        <h1>Weather App</h1>
+        <input type="text" id="city-input" placeholder="Enter city name">
+        <button id="get-weather-btn" onclick="getWeather()">Get Weather</button>
+        <div id="temperature"></div>
+        <div id="description"></div>
+        <div id="humidity"></div>
+        <div id="wind"></div>
+        <div id="precipitation"></div>
+    </div>
+
+    <script>
+        function getWeather() {
+            const city = document.getElementById('city-input').value;
+
+            if (!city) {
+                alert('Please enter a city name.');
+                return;
+            }
+
+            // Use a constant temperature value (replace with real data)
+            const temperature = 25; // You can replace this with actual temperature data
+
+            // Simulate weather data
+            const weatherData = {
+                main: {
+                    humidity: 65,
+                },
+                wind: {
+                    speed: 5,
+                },
+                rain: {
+                    '1h': 0.5,
+                },
+            };
+
+            const temperatureElement = document.getElementById('temperature');
+            const descriptionElement = document.getElementById('description');
+            const humidityElement = document.getElementById('humidity');
+            const windElement = document.getElementById('wind');
+            const precipitationElement = document.getElementById('precipitation');
+
+            temperatureElement.textContent = `Temperature: ${temperature}°C`;
+            descriptionElement.textContent = `Description: Partly Cloudy`;
+            humidityElement.textContent = `Humidity: ${weatherData.main.humidity}%`;
+            windElement.textContent = `Wind Speed: ${weatherData.wind.speed} m/s`;
+            precipitationElement.textContent = `Precipitation (1h): ${weatherData.rain['1h']} mm`;
+        }
+    </script>
+</body>
+</html>
